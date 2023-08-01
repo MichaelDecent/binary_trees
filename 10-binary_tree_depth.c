@@ -9,11 +9,11 @@
 size_t binary_tree_depth(const binary_tree_t *tree)
 {
 	size_t depth = 0;
-	binary_tree_t *temp = tree;
+	const binary_tree_t *temp = tree;
 
-	if (tree == NULL)
+	if (tree == NULL || tree->parent == NULL)
 		return (0);
-	while (temp != NULL)
+	while (temp->parent != NULL)
 	{
 		temp = temp->parent;
 		depth++;
