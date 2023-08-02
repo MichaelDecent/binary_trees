@@ -21,43 +21,45 @@ size_t binary_tree_height(const binary_tree_t *tree)
 /**
  * print_node_value - prints the value of each node at a perticular level
  * @level: the level of the tree
- * @func: print the value of a node
- * 
+ * @func: a pointer to a function to call for each node.
+ * @tree: a pointer to the root node of the tree to print
+ *
  * Return: Nothing
 */
 void print_node_value(const binary_tree_t *tree, int level, void (*func)(int))
 {
-    if (tree == NULL)
-        return;
-    
-    if (level == 1)
-        func(tree->n);
+	if (tree == NULL)
+		return;
 
-    else if (level > 1)
-    {
-        print_node_value(tree->left, level - 1, func);
-        print_node_value(tree->right, level - 1, func);
-    }
+	if (level == 1)
+		func(tree->n);
+
+	else if (level > 1)
+	{
+		print_node_value(tree->left, level - 1, func);
+		print_node_value(tree->right, level - 1, func);
+	}
 }
 
 /**
- * a function that goes through a binary tree using level-order traversal
+ * binary_tree_levelorder - a function that goes through
+ * a binary tree using level-order traversal
  * @tree: a pointer to the root node of the tree to traverse
  * @func: a pointer to a function to call for each node.
- * 
+ *
  * Return: Nothing
 */
 void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
 {
-    int level = 0, i = 1;
+	int level = 0, i = 1;
 
-    if (tree == NULL || func == NULL)
-        return;
-    level = binary_tree_height(tree);
+	if (tree == NULL || func == NULL)
+		return;
+	level = binary_tree_height(tree);
 
-    while (i <= level)
-    {
-        print_node_value(tree, i, func);
-        i++;
-    }
+	while (i <= level)
+	{
+		print_node_value(tree, i, func);
+		i++;
+	}
 }
