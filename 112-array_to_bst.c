@@ -12,7 +12,7 @@ bst_t *array_to_bst(int *array, size_t size)
 	bst_t *root;
 
 	if (!array || size == 0)
-		return (NULL)
+		return (NULL);
 	root = NULL;
 	i = 0;
 	while (i < size)
